@@ -1,4 +1,4 @@
-FROM quay.io/openshift/origin-jenkins-agent-base:4.3
+FROM quay.io/openshift/origin-jenkins-agent-base:4.4
 
 EXPOSE 8080
 
@@ -23,6 +23,7 @@ RUN INSTALL_PKGS=" \
     yum -y clean all --enablerepo='*' && \
     source scl_source enable rh-python36 && \
     scl enable rh-python36 bash && \
+    python3 -m pip install --upgrade pip && \
     python3 -m pip install twine
 
 ADD scl_enable /usr/share/container-scripts/
